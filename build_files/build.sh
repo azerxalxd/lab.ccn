@@ -3,7 +3,7 @@
 set -ouex pipefail
 
 # Packet Tracer
-bash /ctx/ptsetup.sh
+#bash /ctx/ptsetup.sh
 
 # Use a COPR Example:
 #
@@ -11,6 +11,20 @@ bash /ctx/ptsetup.sh
 # dnf5 -y install package
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
+
+
+curl "https://www.netacad.com/authoring-resources/courses/ff9e491c-49be-4734-803e-a79e6e83dab1/c3636211-1ce6-4f92-8a22-ccddf902dd72/en-US/assets/PacketTracer822_amd64_signed_en-US_35234a27-3127-49bc-91ce-2926af76f07a.deb" -o pt.deb
+ar -x pt.deb
+tar -xf data.tar.xz
+cp opt/pt/bin/PacketTracer /usr/lib/
+echo """
+[Desktop Entry]
+Type=Application
+Name=Cisco Packet Tracer
+Exec=/usr/lib/PacketTracer
+StartupNotify=false
+Terminal=false
+""" >> /usr/share/applications/PacketTracer.desktop
 
 # Virtual Box:
 dnf5 -y install gcc
@@ -24,5 +38,3 @@ dnf5 -y install remmina
 
 
 echo 'SUBSYSTEMS=="usb", SUBSYSTEM=="block", TAG+="uaccess", MODE="660"' >> /etc/udev/rules.d/00-usb-permissions.rules
-rm /usr/share/plymouth/themes/spinner/watermark.png
-curl "https://raw.githubusercontent.com/JunePrimavera/testing.lab/refs/heads/main/build_files/sloppy.png" -o /usr/share/plymouth/themes/spinner/watermark.png
