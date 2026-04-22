@@ -2,6 +2,7 @@
 
 set -ouex pipefail
 
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
@@ -13,12 +14,30 @@ set -ouex pipefail
 # this installs a package from fedora repos
 dnf5 install -y tmux 
 
+# Packet Tracer
+#bash /ctx/ptsetup.sh
+
+
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
 # dnf5 -y install package
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
+
+
+curl "https://www.netacad.com/authoring-resources/courses/ff9e491c-49be-4734-803e-a79e6e83dab1/c3636211-1ce6-4f92-8a22-ccddf902dd72/en-US/assets/PacketTracer822_amd64_signed_en-US_35234a27-3127-49bc-91ce-2926af76f07a.deb" -o pt.deb
+ar -x pt.deb
+tar -xf data.tar.xz
+cp opt/pt/bin/PacketTracer /usr/lib/
+echo """
+[Desktop Entry]
+Type=Application
+Name=Cisco Packet Tracer
+Exec=/usr/lib/PacketTracer
+StartupNotify=false
+Terminal=false
+""" >> /usr/share/applications/PacketTracer.desktop
 
 # Virtual Box:
 dnf5 -y install gcc
