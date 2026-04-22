@@ -14,15 +14,15 @@ Fedora Kinoite based UBlue image with preinstalled software and restrictions for
 - LibreOffice
 - Remmina
 - PuTTY
+- Cisco Packet Tracer
 - FileZilla
 
 ## TODO:
 
-Tidy Up
+- Tidy Up
+- Final additions or restrictions
+- Any other tasks that we get tied up doing
 
-Final additions or restrictions
-
-Any other tasks that we get tied up doing
 
 ## Settings/Restrictions
 
