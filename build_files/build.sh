@@ -2,21 +2,7 @@
 
 set -ouex pipefail
 
-### Install packages
-
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
-
-
 # Packet Tracer Dependencies
-dnf5 -y install qt5-qtnetworkauth
-dnf5 -y install qt5-qtscript
-dnf5 -y install qt5-qtmultimedia
-dnf5 -y install qt5-qtwebsockets
-dnf5 -y install qt5-qtwebengine
-
 dnf5 -y install qt5-qtnetworkauth qt5-qtscript qt5-qtmultimedia qt5-qtwebsockets qt5-qtwebengine
 # Download and extract packet tracer .deb archive
 curl "https://www.netacad.com/authoring-resources/courses/ff9e491c-49be-4734-803e-a79e6e83dab1/c3636211-1ce6-4f92-8a22-ccddf902dd72/en-US/assets/PacketTracer822_amd64_signed_en-US_35234a27-3127-49bc-91ce-2926af76f07a.deb" -o pt.deb
